@@ -12,16 +12,16 @@ provider "aws" {
 }
 
 * From within the project folder run the following to initalize the Terraform Environemnt.
-    `<addr>` terraform init
+     terraform init
 * To plan the build run the following.
-    `<addr>` terraform plan
+     terraform plan
 * Now apply the Terraform execution plan 
-    `<addr>` terraform apply
+     terraform apply
 * Open the created S3 bucket "rates-inbox" and upload json data in the following form.
     {"TimeStamp": N, "RateType": "S", "RateValue": N}
 * The data can be found in the DynamoDB table "Rates."
 * Once testing is complete or the configuration is no longer needed run the destroy command to clean up all the resources provisioned in AWS.
-    `<addr>` terraform destroy
+     terraform destroy
 
 ## Process flow
 
