@@ -1,5 +1,6 @@
 # Trevor Dennis - Engineering Assessment
 
+*The following project was created using Terraform version 0.15.0.*
 
 Provider information will be needed to apply. Create a file in the project folder with the following provider infromation to set the region and AWS access. 
 ```
@@ -59,6 +60,3 @@ bucket would allow files to be uploaded in the archive folder. Resulting in the 
 * The S3 bucket currently has "force_destroy = true." This was added to ease development workflow. Depending on the situation this should probably be removed from a live production deployment.
 * Unit tests
 * Files that are uploaded that do not qualify for the lambda function should be logged and moved or removed from the S3 bucket.
-
-
-### Terraform version 0.15.0
