@@ -5,11 +5,13 @@ Terraform version 0.15.0
 Once the repo has been downloaded a provider.tf file will need to be added to the project folder with the following information. 
 
 A provider.tf file with the following information will be needed in the project folder.
+```
 provider "aws" {
   region     = ""
   access_key = ""
   secret_key = ""
 }
+```
 
 * From within the project folder run the following to initalize the Terraform Environemnt.
      ```
