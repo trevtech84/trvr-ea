@@ -36,6 +36,7 @@ provider "aws" {
 ## Process flow
 
 ![alt text](https://github.com/trevtech84/trvr-ea/blob/main/flowchart.png?raw=true)
+
 *Note: Missing API calls*
 
 Once Terraform finishes building the environment, files with rates to be processed can be uploaded into the "rates-inbox" bucket. Files should have the .json extension. Other files without the .json will not be processed and will remain in the bucket root. Files should contain json data in the following form.
