@@ -36,7 +36,9 @@ provider "aws" {
 ## Process flow
 
 Once Terraform finishes building the environment, files with rates to be processed can be uploaded into the "rates-inbox" bucket. Files should have the .json extension. Files should contain json data in the following form.
+    ```
     {"TimeStamp": N, "RateType": "S", "RateValue": N}
+    ```
 Once each qualifying file is uploaded the lambda process_rate.py is triggered and gathers the .json file. The json file is then processed and the data is sent off to the dynamodb table "Rates'' for storage. The json file is then copied from the bucket root to the archive folder. Then the original file is deleted leaving the root clean of .json files.
 
 ## Steps yet to complete:
