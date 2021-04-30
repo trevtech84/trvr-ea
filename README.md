@@ -1,10 +1,7 @@
 # Trevor Dennis - Engineering Assessment
 
-Terraform version 0.15.0
 
-Once the repo has been downloaded a provider.tf file will need to be added to the project folder with the following information. 
-
-A provider.tf file with the following information will be needed in the project folder.
+Provider information will be needed to apply. Create a file in the project folder with the following provider infromation to set the region and AWS access. 
 ```
 provider "aws" {
   region     = ""
@@ -13,7 +10,7 @@ provider "aws" {
 }
 ```
 
-* From within the project folder run the following to initialize the Terraform Environment.
+* From the terminal CD into the project folder and run the following to initialize the Terraform Environment.
      ```
      terraform init
      ```
@@ -21,7 +18,7 @@ provider "aws" {
      ```
      terraform plan
      ```
-* Now apply the Terraform execution plan 
+* To apply the Terraform execution plan 
      ```
      terraform apply
      ```
@@ -62,3 +59,6 @@ bucket would allow files to be uploaded in the archive folder. Resulting in the 
 * The S3 bucket currently has "force_destroy = true." This was added to ease development workflow. Depending on the situation this should probably be removed from a live production deployment.
 * Unit tests
 * Files that are uploaded that do not qualify for the lambda function should be logged and moved or removed from the S3 bucket.
+
+
+### Terraform version 0.15.0
