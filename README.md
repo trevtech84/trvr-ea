@@ -26,7 +26,9 @@ provider "aws" {
      terraform apply
      ```
 * Open the created S3 bucket "rates-inbox" and upload json data in the following form.
+    ```
     {"TimeStamp": N, "RateType": "S", "RateValue": N}
+    ```
 * The data can be found in the DynamoDB table "Rates."
 * Once testing is complete or the configuration is no longer needed run the destroy command to clean up all the resources provisioned in AWS.
      ```
@@ -35,7 +37,9 @@ provider "aws" {
 
 ## Process flow
 
-Once Terraform finishes building the environment, files with rates to be processed can be uploaded into the "rates-inbox" bucket. Files should have the .json extension. Files should contain json data in the following form.
+![alt text](https://github.com/trevtech84/trvr-ea/blob/main/flowchart.png?raw=true)
+
+Once Terraform finishes building the environment, files with rates to be processed can be uploaded into the "rates-inbox" bucket. Files should have the .json extension. Other files without the .json will not be processed and will remain in the bucket root. Files should contain json data in the following form.
     ```
     {"TimeStamp": N, "RateType": "S", "RateValue": N}
     ```
@@ -57,3 +61,4 @@ bucket would allow files to be uploaded in the archive folder. Resulting in the 
 * Configure cloudwatch 
 * The S3 bucket currently has "force_destroy = true." This was added to ease development workflow. Depending on the situation this should probably be removed from a live production deployment.
 * Unit tests
+* Files that are uploaded that do not qualify for the lambda function should be logged and moved or removed from the S3 bucket.
