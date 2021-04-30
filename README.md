@@ -53,3 +53,4 @@ bucket would allow files to be uploaded in the archive folder. Resulting in the 
 * Service alerts
 * Configure cloudwatch 
 * The S3 bucket currently has "force_destroy = true." This was added to ease development workflow. Depending on the situation this should probably be removed from a live production deployment.
+* Unit tests
