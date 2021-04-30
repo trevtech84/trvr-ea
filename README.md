@@ -43,7 +43,7 @@ Once Terraform finishes building the environment, files with rates to be process
 ```
 {"TimeStamp": N, "RateType": "S", "RateValue": N}
 ```
-Once each qualifying file is uploaded the lambda process_rate.py is triggered and gathers the .json file. The json file is then processed and the data is sent off to the dynamodb table "Rates'' for storage. The json file is then copied from the bucket root to the archive folder. Then the original file is deleted leaving the root clean of .json files.
+Once each qualifying file is uploaded the lambda process_rate.py is triggered and gathers the .json file. The json file is then processed and the data is sent off to the DynamoDB table "Rates'' for storage. The json file is then copied from the bucket root to the archive folder. Then the original file is deleted leaving the root clean of qualifying .json files.
 
 ## Steps yet to complete:
 * Move specific components to their own modules.
@@ -56,9 +56,13 @@ Once each qualifying file is uploaded the lambda process_rate.py is triggered an
 ## Considerations
 * It would probably be better to move files to a different S3 bucket. Creating the archive folder in the same
 bucket would allow files to be uploaded in the archive folder. Resulting in the lambda function kicking off again and creating a sub archive folder. Potentially leading to an endless rabbit hole. Copying files to another S3 bucket and potentially another region would allow for some redundancy incase of data loss in the primary location.
-* Batch uploads do not always work. Uploading one file at a time is best.
 * Service alerts
 * Configure cloudwatch 
 * The S3 bucket currently has "force_destroy = true." This was added to ease development workflow. Depending on the situation this should probably be removed from a live production deployment.
 * Unit tests
+  * Valid .json file and data.
+  * Checking if the .json data already exists in the DB before inserting.
+  * Verify that data was written to the DynamoDB table.
+  * Verify that the .json file was moved to the archive folder.
+  * Verify that the processed .json file is no longer in the bucket root. 
 * Files that are uploaded that do not qualify for the lambda function should be logged and moved or removed from the S3 bucket.
