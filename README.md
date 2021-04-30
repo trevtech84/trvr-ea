@@ -40,6 +40,7 @@ Once Terraform finishes building the environment, files with rates to be process
 Once each qualifying file is uploaded the lambda process_rate.py is triggered and gathers the .json file. The json file is then processed and the data is sent off to the dynamodb table "Rates'' for storage. The json file is then copied from the bucket root to the archive folder. Then the original file is deleted leaving the root clean of .json files.
 
 ## Steps yet to complete:
+* Move specific components to their own modules.
 * API endpoints.
     * Latest/most current interest rate.
     * List of all interest rates.
